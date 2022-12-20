@@ -114,6 +114,7 @@ jobs:
           . ./hack/ci/setup-env.sh
       - name: Set DOCKER_TAG for release
         run: |
+          set -x
           echo "DOCKER_TAG=$GITHUB_REF_NAME" >> $GITHUB_ENV
         if: startsWith(github.ref, 'refs/tags/v')
       - run: make build-app-image-${{ matrix.APP }}
